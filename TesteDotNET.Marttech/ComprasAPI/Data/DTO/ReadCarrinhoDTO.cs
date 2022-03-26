@@ -1,18 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using ComprasAPI.Models;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace ComprasAPI.Models
+namespace ComprasAPI.Data.DTO
 {
-    public class Carrinho
+    public class ReadCarrinhoDTO
     {
         [Key]
         [Required]
         public int Id { get; set; }
-
-        [JsonIgnore]
-        public virtual Cliente Cliente { get; set; }
-
         [Required]
         public int ClienteId { get; set; }
 

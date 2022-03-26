@@ -4,13 +4,13 @@ namespace ComprasAPI.Data.DTO
 {
     public class UpdateProdutoDTO
     {
+        [Key]
         [Required]
+        public int Id { get; set; }
         public string Descricao { get; set; }
 
-        [Required]
         public string FotoUrl { get; set; }
 
-        [Required]
         public double Preco { get; set; }
     }
 }
