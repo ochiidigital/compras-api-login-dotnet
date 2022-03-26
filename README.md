@@ -24,6 +24,7 @@ Gerenciamento de Usuários:
 Um usuário precisa obrigatoriamente possuir: Login e Senha.
 Um usuário precisa obrigatoriamente possuir um cadastro como cliente no sistema.
 Para que seja possível o gerenciamento de usuários o usuário precisa estar obrigatoriamente autenticado no sistema.
+
 Gerenciamento de Produtos:
 Possibilidade de listar, criar, alterar e deletar Produtos
 Um produto precisa obrigatoriamente possuir: Descrição, Foto e Preço Unitário. Necessário inserir pelo menos 10 produtos na base de dados [via migration].
