@@ -1,9 +1,9 @@
 # Teste .NET Marttech
 
 ## Entity Relationship Diagram
+<img src="Teste .NET Marttech ERD.png" title="erd teste .net marttech">
 
-
-# Teste .NET
+## Regras do Teste .NET
 
 O objetivo do teste é você mostrar que é capaz de construir uma API utilizando o .NET, sinta se livre para criar a aplicação como desejar, inclusive mudar um pouco o escopo para adicionar novas funcionalidades e recursos.
 Caso não consiga desenvolver o teste por completo, faça o seu melhor e nos envie mesmo assim, para que possamos avaliar seu desempenho.
