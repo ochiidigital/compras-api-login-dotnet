@@ -34,6 +34,8 @@ namespace ComprasAPI
                     Configuration.GetConnectionString("CompraConnection")));
 
             services.AddScoped<ProdutoService, ProdutoService>();
+            services.AddScoped<CarrinhoService, CarrinhoService>();
+            services.AddScoped<ClienteService, ClienteService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
