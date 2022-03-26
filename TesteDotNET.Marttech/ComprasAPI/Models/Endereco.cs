@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace ComprasAPI.Models
 {
@@ -24,5 +25,8 @@ namespace ComprasAPI.Models
 
         [Required]
         public string UF { get; set; }
+
+        [JsonIgnore]
+        public virtual Cliente Cliente { get; set; }
     }
 }
