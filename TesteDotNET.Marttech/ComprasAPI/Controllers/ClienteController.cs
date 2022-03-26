@@ -63,6 +63,7 @@ namespace ComprasAPI.Controllers
         public IActionResult DeletaCliente(int id)
         {
             Result result = clienteService.DeletaCliente(id);
+            //Deletar usuario
 
             if (result.IsFailed)
                 return NotFound();

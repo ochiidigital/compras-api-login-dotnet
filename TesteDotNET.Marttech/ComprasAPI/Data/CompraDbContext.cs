@@ -26,7 +26,8 @@ namespace ComprasAPI.Data
             builder.Entity<Endereco>()
                 .HasOne(e => e.Cliente)
                 .WithOne(c => c.Endereco)
-                .HasForeignKey<Endereco>(e => e.ClienteId);
+                .HasForeignKey<Endereco>(e => e.ClienteId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             //builder.Entity<Email>()
             //    .HasOne(e => e.Cliente)
@@ -35,22 +36,26 @@ namespace ComprasAPI.Data
             builder.Entity<Cliente>()
                 .HasMany(c => c.Emails)
                 .WithOne()
-                .HasForeignKey(e => e.ClienteId);
+                .HasForeignKey(e => e.ClienteId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Telefone>()
                 .HasOne(t => t.Cliente)
                 .WithMany(c => c.Telefones)
-                .HasForeignKey(t => t.ClienteId);
+                .HasForeignKey(t => t.ClienteId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Carrinho>()
                 .HasOne(ca => ca.Cliente)
                 .WithOne(cl => cl.Carrinho)
-                .HasForeignKey<Carrinho>(ca => ca.ClienteId);
+                .HasForeignKey<Carrinho>(ca => ca.ClienteId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Carrinho>()
                 .HasMany(c => c.Itens)
                 .WithOne(i => i.Carrinho)
-                .HasForeignKey(i => i.CarrinhoId);
+                .HasForeignKey(i => i.CarrinhoId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Item>()
                 .HasOne(i => i.Produto)
