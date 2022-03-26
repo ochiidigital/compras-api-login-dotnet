@@ -10,7 +10,7 @@ namespace ComprasAPI.Models
         public int Id { get; set; }
 
         [JsonIgnore]
-        public Produto Produto { get; set; }
+        public virtual Produto Produto { get; set; }
 
         [Required]
         public int ProdutoId { get; set; }
@@ -18,7 +18,7 @@ namespace ComprasAPI.Models
         public double SubTotal { get; set; }
 
         [JsonIgnore]
-        public Carrinho Carrinho { get; set; }
+        public virtual Carrinho Carrinho { get; set; }
 
         [Required]
         public int CarrinhoId { get; set; }

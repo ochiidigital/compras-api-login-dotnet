@@ -1,4 +1,5 @@
 using ComprasAPI.Data;
+using ComprasAPI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,12 +29,18 @@ namespace ComprasAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<CompraDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CompraConnection")));
+            services.AddDbContext<CompraDbContext>(options => 
+                options.UseLazyLoadingProxies().UseSqlServer(
+                    Configuration.GetConnectionString("CompraConnection")));
+
+            services.AddScoped<ProdutoService, ProdutoService>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ComprasAPI", Version = "v1" });
             });
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

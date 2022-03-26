@@ -10,13 +10,14 @@ namespace ComprasAPI.Models
         [Required]
         public int Id { get; set; }
 
-        public Cliente Cliente { get; set; }
+        [JsonIgnore]
+        public virtual Cliente Cliente { get; set; }
 
         [Required]
         public int ClienteId { get; set; }
 
         [JsonIgnore]
-        public List<Item> Itens { get; set; }
+        public virtual List<Item> Itens { get; set; }
 
         public double Total { get; set; }
     }
