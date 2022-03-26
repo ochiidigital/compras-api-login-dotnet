@@ -23,6 +23,7 @@ namespace ComprasAPI.Data.DTO
         [JsonIgnore]
         public virtual List<Telefone> Telefones { get; set; }
 
+        [JsonIgnore]
         public virtual Endereco Endereco { get; set; }
 
         public int EnderecoId { get; set; }
