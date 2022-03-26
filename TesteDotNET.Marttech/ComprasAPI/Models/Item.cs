@@ -9,7 +9,6 @@ namespace ComprasAPI.Models
         [Required]
         public int Id { get; set; }
 
-        [JsonIgnore]
         public virtual Produto Produto { get; set; }
 
         [Required]

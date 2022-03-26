@@ -4,14 +4,16 @@ using ComprasAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ComprasAPI.Migrations
 {
     [DbContext(typeof(CompraDbContext))]
-    partial class CompraDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220326220313_ajustes na entidade cliente")]
+    partial class ajustesnaentidadecliente
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -184,9 +186,8 @@ namespace ComprasAPI.Migrations
                     b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Numero")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Numero")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -208,11 +209,13 @@ namespace ComprasAPI.Migrations
 
             modelBuilder.Entity("ComprasAPI.Models.Email", b =>
                 {
-                    b.HasOne("ComprasAPI.Models.Cliente", null)
+                    b.HasOne("ComprasAPI.Models.Cliente", "Cliente")
                         .WithMany("Emails")
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Cliente");
                 });
 
             modelBuilder.Entity("ComprasAPI.Models.Endereco", b =>
@@ -267,8 +270,7 @@ namespace ComprasAPI.Migrations
 
                     b.Navigation("Emails");
 
-                    b.Navigation("Endereco")
-                        .IsRequired();
+                    b.Navigation("Endereco");
 
                     b.Navigation("Telefones");
                 });

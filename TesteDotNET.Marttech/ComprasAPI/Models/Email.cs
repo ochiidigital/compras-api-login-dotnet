@@ -11,8 +11,6 @@ namespace ComprasAPI.Models
         [Required]
         public string EnderecoDeEmail { get; set; }
 
-        public virtual Cliente Cliente { get; set; }
-
         public int ClienteId { get; set; }
     }
 }

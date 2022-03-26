@@ -28,5 +28,8 @@ namespace ComprasAPI.Models
 
         [JsonIgnore]
         public virtual Cliente Cliente { get; set; }
+
+        //[Required]
+        public int ClienteId { get; set; }
     }
 }

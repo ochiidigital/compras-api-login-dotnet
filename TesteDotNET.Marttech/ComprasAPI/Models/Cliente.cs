@@ -17,18 +17,19 @@ namespace ComprasAPI.Models
         [Required]
         public DateTime Nascimento { get; set; }
 
-        [JsonIgnore]
+        [Required]
         public virtual List<Email> Emails { get; set; }
 
-        [JsonIgnore]
+        [Required]
         public virtual List<Telefone> Telefones { get; set; }
 
+        [Required]
         public virtual Endereco Endereco { get; set; }
 
-        [Required]
         public int EnderecoId { get; set; }
 
-        [JsonIgnore]
         public virtual Carrinho Carrinho { get; set; }
+
+        public int CarrinhoId { get; set; }
     }
 }

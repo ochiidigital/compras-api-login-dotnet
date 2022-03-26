@@ -18,19 +18,13 @@ namespace ComprasAPI.Data.DTO
         [Required]
         public DateTime Nascimento { get; set; }
 
-        [JsonIgnore]
         public virtual List<Email> Emails { get; set; }
 
         [JsonIgnore]
         public virtual List<Telefone> Telefones { get; set; }
 
-        [JsonIgnore]
         public virtual Endereco Endereco { get; set; }
 
-        [Required]
-        public int EnderecoId { get; set; }
-
-        [JsonIgnore]
         public virtual Carrinho Carrinho { get; set; }
     }
 }

@@ -26,11 +26,15 @@ namespace ComprasAPI.Data
             builder.Entity<Endereco>()
                 .HasOne(e => e.Cliente)
                 .WithOne(c => c.Endereco)
-                .HasForeignKey<Cliente>(c => c.EnderecoId);
+                .HasForeignKey<Endereco>(e => e.ClienteId);
 
-            builder.Entity<Email>()
-                .HasOne(e => e.Cliente)
-                .WithMany(c => c.Emails)
+            //builder.Entity<Email>()
+            //    .HasOne(e => e.Cliente)
+            //    .WithMany(c => c.Emails)
+            //    .HasForeignKey(e => e.ClienteId);
+            builder.Entity<Cliente>()
+                .HasMany(c => c.Emails)
+                .WithOne()
                 .HasForeignKey(e => e.ClienteId);
 
             builder.Entity<Telefone>()

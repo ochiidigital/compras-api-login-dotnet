@@ -10,10 +10,11 @@ namespace ComprasAPI.Data.DTO
         [Key]
         [Required]
         public int Id { get; set; }
+
         [Required]
         public int ClienteId { get; set; }
 
-        [JsonIgnore]
+        [Required]
         public virtual List<Item> Itens { get; set; }
 
         [Required]
