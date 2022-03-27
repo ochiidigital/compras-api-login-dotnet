@@ -12,11 +12,13 @@ namespace UsuariosAPI.Services
     {
         private IMapper mapper;
         private UserManager<IdentityUser<int>> userManager;
+        private RoleManager<IdentityRole<int>> roleManager;
 
-        public UsuarioService(IMapper mapper, UserManager<IdentityUser<int>> userManager)
+        public UsuarioService(IMapper mapper, UserManager<IdentityUser<int>> userManager, RoleManager<IdentityRole<int>> roleManager)
         {
             this.mapper = mapper;
             this.userManager = userManager;
+            this.roleManager = roleManager;
         }
 
         public Result CadastraUsuario(CreateUsuarioDTO createUsuarioDTO)
@@ -26,6 +28,10 @@ namespace UsuariosAPI.Services
 
             var identityResult = userManager
                 .CreateAsync(identityUser, createUsuarioDTO.Password).Result;
+            var createRoleResult = roleManager
+                .CreateAsync(new IdentityRole<int>("admin")).Result;
+            var usuarioRoleResult = userManager
+                .AddToRoleAsync(identityUser, "admin").Result;
 
             if (identityResult.Succeeded)
                 return Result.Ok();
