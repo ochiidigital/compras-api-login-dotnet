@@ -38,6 +38,8 @@ namespace UsuariosAPI
                 .AddEntityFrameworkStores<UsuarioDbContext>();
 
             services.AddScoped<UsuarioService, UsuarioService>();
+            services.AddScoped<LoginService, LoginService>();
+            services.AddScoped<TokenService, TokenService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
