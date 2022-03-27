@@ -31,5 +31,7 @@ namespace ComprasAPI.Models
         public virtual Carrinho Carrinho { get; set; }
 
         public int CarrinhoId { get; set; }
+
+        public int UsuarioId { get; set; }
     }
 }
