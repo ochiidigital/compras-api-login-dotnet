@@ -1,6 +1,7 @@
 ﻿using ComprasAPI.Data.DTO;
 using ComprasAPI.Services;
 using FluentResults;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -18,6 +19,7 @@ namespace ComprasAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public IActionResult ListaClientes()
         {
             List<ReadClienteDTO> dto = clienteService.ListaClientes();
@@ -29,6 +31,7 @@ namespace ComprasAPI.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "admin")]
         public IActionResult RecuperaClientePorId(int id)
         {
             ReadClienteDTO dto = clienteService.RecuperaClientePorId(id);
@@ -40,6 +43,7 @@ namespace ComprasAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public IActionResult AdicionaCliente([FromBody] CreateClienteDTO createClienteDTO)
         {
             ReadClienteDTO readClienteDTO= clienteService.AdicionaCliente(createClienteDTO);
@@ -49,6 +53,7 @@ namespace ComprasAPI.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "admin")]
         public IActionResult AtualizaCliente(int id, [FromBody] UpdateClienteDTO updateClienteDTO)
         {
             Result result = clienteService.AtualizaCliente(id, updateClienteDTO);
@@ -60,6 +65,7 @@ namespace ComprasAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "admin")]
         public IActionResult DeletaCliente(int id)
         {
             Result result = clienteService.DeletaCliente(id);

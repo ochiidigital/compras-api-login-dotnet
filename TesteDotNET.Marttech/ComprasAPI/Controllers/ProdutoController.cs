@@ -1,6 +1,7 @@
 ﻿using ComprasAPI.Data.DTO;
 using ComprasAPI.Services;
 using FluentResults;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace ComprasAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin, cliente")]
         public IActionResult ListaProdutos()
         {
             List<ReadProdutoDTO> dto = produtoService.ListaProdutos();
@@ -30,6 +32,7 @@ namespace ComprasAPI.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "admin, cliente")]
         public IActionResult RecuperaProdutoPorId(int id)
         {
             ReadProdutoDTO dto = produtoService.RecuperaProdutoPorId(id);
@@ -41,6 +44,7 @@ namespace ComprasAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public IActionResult AdicionaProduto([FromBody]CreateProdutoDTO createProdutoDTO)
         {
             ReadProdutoDTO readProdutoDTO = produtoService.AdicionaProduto(createProdutoDTO);
@@ -50,6 +54,7 @@ namespace ComprasAPI.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "admin")]
         public IActionResult AtualizaProduto(int id, [FromBody] UpdateProdutoDTO updateProdutoDTO)
         {
             Result result = produtoService.AtualizaProduto(id, updateProdutoDTO);
@@ -61,6 +66,7 @@ namespace ComprasAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "admin")]
         public IActionResult DeletaProduto(int id)
         {
             Result result = produtoService.DeletaProduto(id);

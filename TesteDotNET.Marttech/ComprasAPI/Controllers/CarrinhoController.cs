@@ -1,6 +1,7 @@
 ﻿using ComprasAPI.Data.DTO;
 using ComprasAPI.Services;
 using FluentResults;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace ComprasAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public IActionResult ListaCarrinhos()
         {
             List<ReadCarrinhoDTO> readCarrinhoDTOs = carrinhoService
@@ -31,6 +33,7 @@ namespace ComprasAPI.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "admin, cliente")]
         public IActionResult RecuperaCarrinhoPorId(int id)
         {
             ReadCarrinhoDTO dto = carrinhoService.RecuperaCarrinhoPorId(id);
@@ -42,6 +45,7 @@ namespace ComprasAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public IActionResult AdicionaCarrinho([FromBody] CreateCarrinhoDTO createCarrinhoDTO)
         {
             ReadCarrinhoDTO readCarrinhoDTO = carrinhoService.AdicionaCarrinho(createCarrinhoDTO);
@@ -51,6 +55,7 @@ namespace ComprasAPI.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "admin, cliente")]
         public IActionResult AtualizaCarrinho(int id, [FromBody] UpdateCarrinhoDTO updateCarrinhoDTO)
         {
             Result result = carrinhoService.AtualizaCarrinho(id, updateCarrinhoDTO);
@@ -62,6 +67,7 @@ namespace ComprasAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "admin")]
         public IActionResult DeletaCarrinho(int id)
         {
             Result result = carrinhoService.DeletaCarrinho(id);
